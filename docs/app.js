@@ -15,10 +15,15 @@ function addItem(quantity, size, description) {
 
 // Function to delete an item from the drink order
 function deleteItem(index) {
-  // Remove the item at the specified index from all arrays
-  quantities.splice(index, 1);
-  sizes.splice(index, 1);
-  descriptions.splice(index, 1);
+  // Check if the index is valid
+  if (index >= 0 && index < quantities.length) {
+    // Remove the item at the specified index from all arrays
+    quantities.splice(index, 1);
+    sizes.splice(index, 1);
+    descriptions.splice(index, 1);
+  } else {
+    console.error('Invalid index!');
+  }
 }
 
 // Function to calculate the total cost of the drink order
