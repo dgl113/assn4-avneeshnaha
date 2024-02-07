@@ -1,34 +1,5 @@
-'use strict';
-
-// Global arrays to store drink order information
-let quantities = [];
-let sizes = [];
-let descriptions = [];
-
-// Function to add an item to the drink order
-function addItem(quantity, size, description) {
-  // Push the provided values to their respective arrays
-  quantities.push(quantity);
-  sizes.push(size);
-  descriptions.push(description);
-}
-
-// Function to delete an item from the drink order
-function deleteItem(index) {
-  // Check if the index is valid
-  if (index >= 0 && index < quantities.length) {
-    // Remove the item at the specified index from all arrays
-    quantities.splice(index, 1);
-    sizes.splice(index, 1);
-    descriptions.splice(index, 1);
-  } else {
-    console.error('Invalid index!');
-  }
-}
-
-// Function to calculate the total cost of the drink order
 function getOrderTotal() {
-  // Define the prices for different sizes of coffees and teas
+  // Define prices for different sizes of coffees and teas
   const coffeePrices = {
     Short: 2.99,
     Tall: 3.19,
@@ -47,7 +18,7 @@ function getOrderTotal() {
 
   // Iterate over the arrays and calculate the total cost
   for (let i = 0; i < quantities.length; i++) {
-    // Determine if the drink is a coffee or tea based on the description
+    // Determine if the drink is coffee or tea based on the description
     const isCoffee = descriptions[i].toLowerCase().includes('coffee');
 
     // Retrieve the price based on the size and type of drink
@@ -57,6 +28,6 @@ function getOrderTotal() {
     totalCost += quantities[i] * price;
   }
 
-  // Return the total cost
-  return totalCost.toFixed(2); // Round to 2 decimal places
+  // Return the total cost as a number
+  return totalCost;
 }
